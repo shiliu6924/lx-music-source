@@ -6,7 +6,7 @@
 |-|-|-|-|-|-|
 |墨澜2.3.4|flac24bit|flac|flac|flac|flac|
 |星海3.2.15|flac|flac|flac|flac|flac|
-|HYW1.1.0|flac24bit|无|flac24bit|flac24bit|320k|
+|HYW1.1.0|flac24bit|flac24bit|flac24bit|flac24bit|320k|
 
 说明：实际最高音质受歌曲版权、音源后端等因素影响，请以实际为准
 
@@ -18,7 +18,9 @@
 
 星海：[https://zrcdy.dpdns.org/lx/xinghai-music-sourcev2.3.15.js](https://zrcdy.dpdns.org/lx/xinghai-music-sourcev2.3.15.js)（[https://zrcdy.dpdns.org/lx/vers.php](https://zrcdy.dpdns.org/lx/vers.php)）
 
-HYW：[https://github.com/Macrohard0001/HYWmusic\_source/releases/download/v1.1.0/HYWmusic\_.\_v1.1.0.js](https://github.com/Macrohard0001/HYWmusic_source/releases/download/v1.1.0/HYWmusic_._v1.1.0.js)
+HYW：[http://103.79.184.97/api/releases/download?id=cmuzgr8l40ac83pinndrm3vyu\&download=true\&format=lx](http://103.79.184.97/api/releases/download?id=cmuzgr8l40ac83pinndrm3vyu&download=true&format=lx)
+
+说明：为了稳定性和下载速度，优先推荐非github链接
 
 
 

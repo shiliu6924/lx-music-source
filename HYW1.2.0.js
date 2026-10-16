@@ -1,15 +1,15 @@
 /**
  * @name HYWmusic_公益版
- * @version v1.1.0
+ * @version v1.2.0
  * @author Ryn
  * @description qq群：1094095648；965503129
  * @homepage https://github.com/Macrohard0001/HYWmusic_source
  * @license MIT
- * @updateUrl http://103.79.184.97/api/releases?script=HYWmusic_%E5%85%AC%E7%9B%8A%E7%89%88&scriptType=free&releaseType=lx&version=v1.1.0
+ * @updateUrl https://103.79.184.97/api/releases?script=HYWmusic_%E5%85%AC%E7%9B%8A%E7%89%88&scriptType=free&releaseType=lx&version=v1.2.0
  *
- * 支持平台: kw、tx、wy、mg、qs、bili、ytb、xm
+ * 支持平台: kw、tx、wy、mg、qs、bili、ytb、xm、kg
  * 支持音质: 128k、320k、flac、flac24bit
- * 生成时间: 2026-10-04T06:34:53.303Z
+ * 生成时间: 2026-10-08T11:39:01.047Z
  *
  * 协议参考：ikun-music-source.js + lxmusic.toside.cn/desktop/custom-source
  *   - MUSIC_QUALITY 每平台独立音质（收敛到规范标准集，高音质可直接请求由服务端解析）
@@ -27,11 +27,11 @@ const UPDATE_ENABLE = true
 const { EVENT_NAMES, request, on, send, env, version: LX_VERSION } = globalThis.lx
 
 // ====== 每平台独立音质（参考 ikun） ======
-const MUSIC_QUALITY = JSON.parse('{"kw":["128k","320k","flac","flac24bit"],"tx":["128k","320k","flac","flac24bit"],"wy":["128k","320k","flac","flac24bit"],"mg":["128k","320k"],"qs":["128k","320k"],"bili":["128k","320k"],"ytb":["128k"],"xm":["128k","320k"]}')
+const MUSIC_QUALITY = JSON.parse('{"kw":["128k","320k","flac","flac24bit"],"tx":["128k","320k","flac","flac24bit"],"wy":["128k","320k","flac","flac24bit"],"mg":["128k","320k"],"qs":["128k","320k"],"bili":["128k","320k"],"ytb":["128k"],"xm":["128k","320k"],"kg":["128k","320k","flac","flac24bit"]}')
 const MUSIC_SOURCE = Object.keys(MUSIC_QUALITY)
 
 // ====== 运行参数 ======
-const API_BASE = 'http://103.79.184.97'
+const API_BASE = 'https://103.79.184.97'
 const CARD_KEY = '6C1F-53W0-GRKI-EVFG'
 
 // ====== 日志 ======
@@ -98,7 +98,8 @@ const collectMusicInfoParams = (musicInfo, platform) => {
   if (musicInfo.hash) params.hash = musicInfo.hash
 
   const fields = ['albumAudioId', 'strMediaMid', 'mediaMid', 'copyrightId', 'rid', 'musicId',
-    'albumId', 'albumName', 'albumMid', 'songname', 'songName', 'name', 'singer', 'singers', 'artist']
+    'albumId', 'albumName', 'albumMid', 'songname', 'songName', 'name', 'singer', 'singers', 'artist',
+    'interval', 'duration'] // v1.7.2: 时长透传 —— 服务端真实音质核验（码率估算）依赖 interval/duration
   for (const f of fields) {
     if (musicInfo[f] !== undefined && musicInfo[f] !== null && musicInfo[f] !== '') params[f] = musicInfo[f]
     if (musicInfo.meta && musicInfo.meta[f] !== undefined && musicInfo.meta[f] !== null && musicInfo.meta[f] !== '') params[f] = musicInfo.meta[f]
@@ -231,8 +232,8 @@ send(EVENT_NAMES.inited, {
 })
 
 // ====== 更新检查（v1.3.5+：inited 后异步调用，发现新版本发 updateAlert） ======
-const SCRIPT_VERSION = 'v1.1.0'
-const UPDATE_URL = 'http://103.79.184.97/api/releases?script=HYWmusic_%E5%85%AC%E7%9B%8A%E7%89%88&scriptType=free&releaseType=lx&version=' + SCRIPT_VERSION
+const SCRIPT_VERSION = 'v1.2.0'
+const UPDATE_URL = 'https://103.79.184.97/api/releases?script=HYWmusic_%E5%85%AC%E7%9B%8A%E7%89%88&scriptType=free&releaseType=lx&version=' + SCRIPT_VERSION
 
 const parseVer = (s) => {
   const m = String(s || '').match(/\d+(?:\.\d+)+/)
